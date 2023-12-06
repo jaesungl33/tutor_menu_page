@@ -36,6 +36,11 @@ document.getElementById('filterForm').addEventListener('submit', function(event)
     }
 });
 
+document.getElementById('filterForm').onsubmit = function(event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
+    applyFilter();
+};
+
 function applyFilter() {
     var minPrice = document.getElementById('minPrice').value;
     var maxPrice = document.getElementById('maxPrice').value;
@@ -44,13 +49,21 @@ function applyFilter() {
     var tutorCards = document.getElementsByClassName('tutor-card');
 
     for (var i = 0; i < tutorCards.length; i++) {
-        var price = parseFloat(tutorCards[i].getElementsByClassName('tutor-price')[0].innerText);
-        var subject = tutorCards[i].getElementsByClassName('tutor-info')[0].getElementsByTagName('strong')[0].innerText.toLowerCase();
+        var price = parseFloat(tutorCards[i].getElementsByClassName('tutor-price')[0].innerText.replace(/[^0-9.]/g, ''));
+        var subject = tutorCards[i].getElementsByClassName('tutor-subject')[0].innerText.toLowerCase();
 
-        var priceCondition = (!minPrice || price >= minPrice) && (!maxPrice || price <= maxPrice);
+        var priceCondition = (!minPrice || price >= parseFloat(minPrice)) && (!maxPrice || price <= parseFloat(maxPrice));
         var subjectCondition = !subjectFilter || subject.includes(subjectFilter);
 
         tutorCards[i].style.display = (priceCondition && subjectCondition) ? '' : 'none';
     }
 }
+
+
+// Ensure to attach this function to the form submission event
+document.getElementById('filterForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    applyFilter();
+});
+
 

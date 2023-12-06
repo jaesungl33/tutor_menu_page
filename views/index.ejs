@@ -8,18 +8,26 @@
 </head>
 <body>
     <main>
-        <form id="filterForm">
-            <label for="minPrice">Min Price:</label>
-            <input type="number" id="minPrice" name="minPrice">
-    
-            <label for="maxPrice">Max Price:</label>
-            <input type="number" id="maxPrice" name="maxPrice">
-    
-            <label for="subjectFilter">Subject:</label>
-            <input type="text" id="subjectFilter" name="subjectFilter">
-    
-            <button type="submit">Apply Filter</button>
-        </form>
+        <div class="filter-form">
+            <form id="filterForm">
+                <div>
+                    <label for="minPrice">Min Price:</label>
+                    <input type="number" id="minPrice" name="minPrice" placeholder="Minimum Price">
+                </div>
+                
+                <div>
+                    <label for="maxPrice">Max Price:</label>
+                    <input type="number" id="maxPrice" name="maxPrice" placeholder="Maximum Price">
+                </div>
+                
+                <div>
+                    <label for="subjectFilter">I want to learn:</label>
+                    <input type="text" id="subjectFilter" name="subjectFilter" placeholder="Subject">
+                </div>
+                
+                <button type="submit">Apply Filter</button>
+            </form>
+        </div>
         <% for(var i = 0; i < tutors.length; i++) { %>
         <div class="tutor-card">
             <div class="tutor-image">

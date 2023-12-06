@@ -115,16 +115,51 @@ body {
 
 /* Add your star styling here */
 
-#filterForm {
-    margin-bottom: 20px;
+.filter-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
     text-align: center;
 }
 
-#filterForm label, #filterForm input {
+.filter-form label, 
+.filter-form input {
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
-#filterForm button {
-    padding: 5px 10px;
+.filter-form input[type="number"],
+.filter-form input[type="text"] {
+    width: calc(50% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.filter-form input[type="text"] {
+    width: calc(100% - 22px);
+}
+
+.filter-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-form button:hover {
+    background-color: #003d82;
+}
+
+.filter-form input::placeholder {
+    color: #999;
+    opacity: 1;
 }
 
